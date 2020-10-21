@@ -14,6 +14,17 @@ class Datos extends Seeder
         DB::table('productos')->insert([
             'Nombre_Producto' => 'Tennis Nike',
         ]);
-    
+        DB::table('productos')->insert([
+            'Nombre_Producto' => 'Jersey Santos Laguna',
+        ]);
+
+        DB::table('productos')->insert([
+            'Nombre_Producto' => 'Jersey Alemania',
+        ]);
+        DB::table('productos')->insert([
+            'Nombre_Producto' => 'Jersey Bayern Munchen',
+        ]);
+
+            
 }
 }

@@ -12,12 +12,12 @@ class Comentarios extends Seeder
     public function run()
     {
         DB::table('comentarios')->insert([
-            'id' => '7',
+            'id' => '1',
             'Comentarios'=>'Talla #9',
             'id_producto'=>'1',
              'Nombre_Usuario'=>'Ángel Dávila']);
              DB::table('comentarios')->insert([
-                'id' => '8',
+                'id' => '2',
                 'Comentarios'=>'23 Jersey Manga larga',
                 'id_producto'=>'2',
                  'Nombre_Usuario'=>'Ezequiel Rodríguez']);
