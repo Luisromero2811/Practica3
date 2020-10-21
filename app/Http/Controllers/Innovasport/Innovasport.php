@@ -11,6 +11,7 @@ class Innovasport extends Controller
         //$users = DB::table('users')->select('name', 'email as user_email')->get();
         //$Producto=DB::table('productos')->get();
         //return $Producto;
+        //
     }
     public function Productoid($id=null){
         if($id)
