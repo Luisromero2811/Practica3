@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 class Datos extends Seeder
 {
     /**
@@ -11,20 +12,7 @@ class Datos extends Seeder
      */
     public function run()
     {
-        DB::table('productos')->insert([
-            'Nombre_Producto' => 'Tennis Nike',
-        ]);
-        DB::table('productos')->insert([
-            'Nombre_Producto' => 'Jersey Santos Laguna',
-        ]);
-
-        DB::table('productos')->insert([
-            'Nombre_Producto' => 'Jersey Alemania',
-        ]);
-        DB::table('productos')->insert([
-            'Nombre_Producto' => 'Jersey Bayern Munchen',
-        ]);
-
-            
-}
+       $Producto=factory(App\Producto::class,15)->create();
+        
+    } 
 }

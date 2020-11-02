@@ -17,7 +17,7 @@ class Actualizar extends Controller
         }
         public function Eliminar(Request $request, $id)
         {
-            $Product=Comentarios::where('id','=',$id);
+            $Product=Comentarios::where('id_producto','=',$id);
             $Product->delete();
             $Product=Producto::where('Nombre_Producto','=',$request->Nombre_Producto);
             $Product->delete();
@@ -33,7 +33,7 @@ class Actualizar extends Controller
         $Comentarios=Comentarios::find($id);
         $Comentarios->update(['Comentarios'=>$request->Comentarios]);
         $Comentarios->update(['id_producto'=>$request->id_producto]);
-        $Comentarios->update(['Nombre_Usuario'=>$request->Nombre_Usuario]);
+        $Comentarios->update(['id_personas'=>$request->id_personas]);
         $Comentarios->save();
         //$request->validate([
           //  'first_name'=>'required',

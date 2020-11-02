@@ -17,7 +17,7 @@ class CreateComentariosTable extends Migration
             $table->increments('id');
             $table->string('Comentarios',100);
             $table->foreignid('id_producto')->references('id')->on('productos');
-            $table->string('Nombre_Usuario',100);
+            $table->foreignid('id_personas')->references('id')->on('personas');
             $table->timestamps();
         });
     }

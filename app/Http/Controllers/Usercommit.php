@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class Usercommit extends Controller
 {
-    public function Usercommit()
+    public function Usercommit($id)
     {
       $Comentario=DB::table('comentarios')
+      ->join('personas','comentarios.id_personas','=','personas.id')
       ->join('productos','comentarios.id_producto','=','productos.id')
-        ->select('comentarios.*','productos.Nombre_Producto')
-        ->where('comentarios.Nombre_Usuario','=','Luis Romero')
+        ->select('comentarios.*','personas.Nombre','productos.Nombre_Producto')
+        ->where('comentarios.id_personas','=',$id)
         ->get();
       return $Comentario;
     }
 }
+
+//Producto con comentarios
+

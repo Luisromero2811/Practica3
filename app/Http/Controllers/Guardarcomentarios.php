@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Comentarios;
 use App\Producto;
+use App\Personas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class Guardarcomentarios extends Controller
@@ -13,8 +14,7 @@ class Guardarcomentarios extends Controller
         $Comentarios->id=$request->id;
         $Comentarios->Comentarios=$request->Comentarios;
         $Comentarios->id_producto=$request->id_producto;
-        $Comentarios->Nombre_Usuario=$request->Nombre_Usuario;
-        
+        $Comentarios->id_personas=$request->id_personas;
         $Comentarios->save();
     }
 }
