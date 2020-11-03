@@ -20,11 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Ruta de middleware
-Route::middleware('auth:sanctum')->get('usuario',"App\Http\Controllers\AuthController@Validacion");
-Route::middleware('auth:sanctum',)->delete('logout',"App\Http\Controllers\AuthController@registro");
+Route::middleware('auth:sanctum')->get('usuario',"AuthController@Validacion");
+Route::middleware('auth:sanctum')->delete('logout',"AuthController@Logout");
 //Rutas para registrar y loguear
-Route::post('Registrar','AuthController@registro');
-Route::post("Ingresar",'AuthController@Login');
+Route::post('/Registrar','AuthController@registro');
+Route::post('/Ingresar','AuthController@Login');
+Route::post('/Loginadmin','AuthController@Loginadmin');
+
 //Consultas
 Route::get("Innovasport",'Innovasport@Productos');
 Route::get("Innovasport/Consulta1/{id?}",'Innovasport@Productoid');

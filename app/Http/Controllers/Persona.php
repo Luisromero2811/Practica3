@@ -5,12 +5,14 @@ use App\Comentarios;
 use App\Producto;
 use App\Personas;
 use Illuminate\Http\Request;
-
-
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+
 
 class Persona extends Controller
 {
+    use HasApiTokens, Notifiable;
     Public function Guardar(Request $request)
     {
     $Persona = new Personas();
