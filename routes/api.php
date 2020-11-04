@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use  App\Http\Middleware;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,13 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Ruta para actualizar permisos
+Route::put('Modificarpermiso','AuthController@Update');
 //Ruta de middleware
 Route::middleware('auth:sanctum')->get('usuario',"AuthController@Validacion");
 Route::middleware('auth:sanctum')->delete('logout',"AuthController@Logout");
 //Rutas para registrar y loguear
 Route::post('/Registrar','AuthController@registro');
 Route::post('/Ingresar','AuthController@Login');
-Route::post('/Loginadmin','AuthController@Loginadmin');
+Route::post('/Loginadmin','AuthController@Loginadmin')->middleware('Loginadmin');
 
 //Consultas
 Route::get("Innovasport",'Innovasport@Productos');

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Personas;
+use App\personal_access_tokens;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\MessageBag;
@@ -40,15 +41,13 @@ class AuthController extends Controller
     return response()->json(["token"=>$token],201);
     
   }  
-  /*public function Loginadmin(Request $request)
+  public function Loginadmin(Request $request)
   {
-    $Administrador=Personas::find(4);
-    if($request->Correo==$Administrador->Correo && Hash::check($request->password,$Administrador->password))
-    {
-      $token=$Administrador->createToken($request->Correo,['Administrador'])->plainTextToken;
-      return response()->json(['Token'=>$token],201);
+    //Genera el Token para el Admin
+    $Personas= Personas::find(4)->first();
+    $token=$Personas->createToken($request->Correo,['Administradores'])->plainTextToken;
+    return response()->json(["Token"=>$token],201);
   }
-  }*/
   public function Logout(Request $request)
   {
       //Rompe los token creados
@@ -74,4 +73,13 @@ class AuthController extends Controller
         return response()->json($Personas,200);}
         return abort(422,"Fallo registro");
   } 
-}
+  public function Update(Request $request)
+    {
+        $Personas= personal_access_tokens::find($request->id);  
+        $Personas->abilities=$request->Permiso;  
+        if($Personas->save())
+        return response()->json(["Se modifico el permiso al usuario"=>$Personas]);   
+        return response()->json(null,400);
+        //Route::put('Modificarpermiso','AuthController@Update');
+    }
+  }
