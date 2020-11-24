@@ -27,11 +27,11 @@ Route::middleware('auth:sanctum')->delete('logout',"AuthController@Logout");
 //Rutas para registrar y loguear
 Route::post('/Registrar','AuthController@registro');
 Route::post('/Ingresar','AuthController@Login');
-Route::post('/Loginadmin','AuthController@Loginadmin')->middleware('Loginadmin');
-
+Route::post('/Agregarproducto','AuthController@Agregarproducto')->middleware('Accionvendedor');
+//Route::post();
 //Consultas
-Route::get("Innovasport",'Innovasport@Productos');
-Route::get("Innovasport/Consulta1/{id?}",'Innovasport@Productoid');
+Route::middleware('auth:sanctum')->get("Innovasport",'Innovasport@Productos');
+Route::middleware('auth:sanctum')->get("Innovasport/Consulta1/{id?}",'Innovasport@Productoid');
 Route::get("Innovasport/Consulta2",'ProductoComentario@ProductosCommit');
 Route::get("Innovasport/Consulta3/{id}",'Usercommit@Usercommit');
 //Inserciones
@@ -41,8 +41,14 @@ Route::post("/GuardarPersona",'Persona@Guardar');
 //Actualizaciones
 Route::put("Innovasport/Actualizarproducto/{id}",'Actualizar@Actualizarproduct');
 Route::put("Innovasport/Actualizarcommit/{id}", 'Actualizar@Actualizarcommit');
-Route::put("/Actualizarpersona/{id}",'Persona@Actualizar');
+Route::middleware('auth:sanctum')->put("Permiso",'AuthController@ActualizarPermiso');
 //Eliminar
 Route::delete("Innovasport/Eliminarproducto/{id}",'Actualizar@Eliminar');
 Route::delete("Innovasport/Eliminarcommit/{id}",'Actualizar@Eliminarcommit');
 Route::delete("/Eliminarpersona/{id}",'Persona@Eliminar');
+//Correos
+Route::post("Mandarcorreo",'Correocontroller@Send'); 
+Route::get("Verificacion/{id}",'Correocontroller@Verificar');
+Route::post("Consulta/{id}",'Verificacion@Permisodenied');
+//Imagen de perfil
+Route::post("Perfil/{id}/Subirimagen",'Imagenuser@Subirimagen');

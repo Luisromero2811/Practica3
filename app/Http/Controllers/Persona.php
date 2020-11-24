@@ -21,6 +21,7 @@ class Persona extends Controller
     $Persona->Edad=$request->Edad;
     $Persona->Correo=$request->Correo;
     $Persona->password=$request->password;
+    $Persona->Tipo_Rol=$request->Tipo_Rol;
     $Persona->save();
     }
     Public function Actualizar(Request $request, $id)
@@ -30,6 +31,7 @@ class Persona extends Controller
         $Persona->update(['Edad'=>$request->Edad]);
         $Persona->update(['Correo'=>$request->Correo]);
         $Persona->update(['password'=>$request->password]);
+        $Persona->update(['Tipo_Rol'=>$request->password]);
         $Persona->save();
     }
     public function Eliminar (Request $request, $id)

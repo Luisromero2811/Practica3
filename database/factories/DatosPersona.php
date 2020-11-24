@@ -11,5 +11,9 @@ $factory->define(App\Personas::class, function (Faker $faker) {
         'Edad' => $faker->numberBetween($min = 1, $max = 29),
         'Correo' => $faker->email(),
         'password'=>$faker->ean13(),
+        'Tipo_Rol'=>'Usuario',
+        'Verificado'=>false,     
+        'url_imagen'=>NULL
     ];
 });
+//'verification_code'=>sean13(),

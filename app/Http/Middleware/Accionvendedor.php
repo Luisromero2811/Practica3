@@ -6,7 +6,7 @@ use Closure;
 use App\Personas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-class Loginadmin
+class Accionvendedor
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,9 @@ class Loginadmin
     public function handle($request, Closure $next)
     {
         //Valida si es Admin
-        
-        $Administrador=Personas::find(4);
-    if($request->Correo==$Administrador->Correo)
-    {
-        return $next($request);
+        $Personas = Personas::Where('Correo', $request->Correo)->first();
+        if($Personas->tokens[0]->abilities[0]=="Vendedor"){
+            return $next($request);
   }
         else{
             return abort(400);

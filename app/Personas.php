@@ -8,7 +8,7 @@ class Personas extends Model
 {use HasApiTokens, Notifiable;
     //Table referencia a que tabla se va a ligar en caso de tener otro nombre
     //Poder realizar cambios 
-    protected $fillable = ['Nombre','Edad','Correo','password'];
+    protected $fillable = ['Nombre','Edad','Correo','password','Tipo_Rol','Verificado','url_imagen'];
     public function Comentarios()
     {
         return $this->hasMany('app\Comentarios');  

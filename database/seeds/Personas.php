@@ -15,8 +15,9 @@ class Personas extends Seeder
                 'Nombre'=>'Luis Romero',
                 'Edad'=>'20',
                 'Correo'=>'luisrom28@gmail.com',
-                 'password'=>'123456']);
-
+                 'password'=>Hash::make('123456'),
+                 'Verificado'=>true,
+                'url_imagen'=>NULL]);
         $Persona=factory(App\Personas::class,5)->create();
     }
 }
